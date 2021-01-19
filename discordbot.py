@@ -29,8 +29,11 @@ def get_data(message):
     }
     return data_table.get(command, 'not command')
 
+@bot.command()
+async def roles(ctx):
+    await ctx.send(message.guild.roles)
 
-@client.event
+@bot.event
 async def on_message(message):
     print(get_data(message))
 
