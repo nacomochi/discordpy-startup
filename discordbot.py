@@ -10,10 +10,18 @@ token = os.environ['DISCORD_BOT_TOKEN']
 
 @bot.event
 async def on_message(message):
-    if message.content == "/roles":
+    # メッセージの送信者がbotだった場合は無視する
+    if message.author.bot:
+        return
+    elif message.content == "/roles":
         await message.channel.send(message.guild.roles)
     elif message.content == "/voice":
-        await message.channel.send(message.VoiceChannel.members)
+        if message.author.voice is None:
+            await message.channel.send("あなたはボイスチャンネルに接続していません。")
+            return
+        else:
+            channel = discord.utils.get(guild.voice_channels, name="AmongUs")
+            await message.channel.send(guild.voice_channels)
     elif message.content == "/dm":
         dm = await message.author.create_dm()
         await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
