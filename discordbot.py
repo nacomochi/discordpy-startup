@@ -5,7 +5,6 @@ import random
 
 bot = commands.Bot(
     command_prefix='/'
-    activity=discord.Game("AmongUs") # AmongUsをプレイ中
 )
 token = os.environ['DISCORD_BOT_TOKEN']
 
