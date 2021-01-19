@@ -13,7 +13,7 @@ async def on_message(message):
     if message.content == "/roles":
         await message.channel.send(message.guild.roles)
     elif message.content == "/voice":
-        await message.channel.send(discord.VoiceChannel.members)
+        await message.channel.send(message.VoiceChannel.members)
     elif message.content == "/dm":
         dm = await message.author.create_dm()
         await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
