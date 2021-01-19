@@ -12,7 +12,9 @@ token = os.environ['DISCORD_BOT_TOKEN']
 async def on_message(message):
     if message.content == "/roles":
         await message.channel.send(message.guild.roles)
-    elif message.content == "!dm":
+    elif message.content == "/voice":
+        await message.channel.send(discord.VoiceChannel.members)
+    elif message.content == "/dm":
         dm = await message.author.create_dm()
         await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
 
