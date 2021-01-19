@@ -31,11 +31,11 @@ def get_data(message):
 
 @bot.command()
 async def roles(ctx):
-    await ctx.send(message.guild.roles)
+    await ctx.send(get_data(message))
 
 @bot.event
-async def on_message(message):
-    print(get_data(message))
+async def roles(ctx):
+    await ctx.send(get_data(message))
 
 
 bot.run(token)
