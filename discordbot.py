@@ -22,10 +22,8 @@ async def on_message(message):
             # コマンド入力者の接続しているボイスチャンネルのmember_listを取得する
             await message.channel.send(message.author.voice.channel.name)
             await message.channel.send(message.author.voice.channel.members)
-            member_list = await message.author.voice.channel.members
-            await message.channel.send(member_list)
             # member_listからランダムな1ユーザを選択し、DMを送信する
-            dm = await random.choice(await message.author.voice.channel.members).create_dm()
+            dm = await random.choice(message.author.voice.channel.members).create_dm()
             await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
             await message.channel.send("DMを送信しました")
     elif message.content == "/dm":
