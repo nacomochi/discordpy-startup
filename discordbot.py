@@ -4,7 +4,7 @@ import traceback
 
 bot = commands.Bot(
     command_prefix='/'
-    activity=discord.Game("AmongUsを観戦中")
+    activity=discord.Game("AmongUs")
 )
 token = os.environ['DISCORD_BOT_TOKEN']
 
@@ -32,13 +32,12 @@ def get_data(message):
     }
     return data_table.get(command, 'not command')
 
-@bot.command()
-async def roles(ctx):
-    await ctx.send(get_data(message))
+
 
 @bot.event
-async def roles(ctx):
-    await ctx.send(get_data(message))
+async def on_message(message):
+    if message.content == "/roles":
+        await message.channel.send(message.guild.roles)
 
 
 bot.run(token)
