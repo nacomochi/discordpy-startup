@@ -20,7 +20,6 @@ async def on_message(message):
             await message.channel.send("あなたはボイスチャンネルに接続していません。")
             return
         else:
-            await message.channel.send(message.author.voice.channel.name)
             await message.channel.send(message.author.voice.channel.members)
     elif message.content == "/dm":
         dm = await message.author.create_dm()
