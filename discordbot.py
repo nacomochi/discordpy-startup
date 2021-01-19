@@ -18,5 +18,21 @@ async def ping(ctx):
     await ctx.send('pong')
 
     
+def get_data(message):
+    command = message.content
+    data_table = {
+        '/members': message.guild.members,
+        '/roles': message.guild.roles,
+        '/text_channels': message.guild.text_channels,
+        '/voice_channels': message.guild.voice_channels,
+        '/category_channels': message.guild.categories,
+    }
+    return data_table.get(command, 'not command')
+
+
+@client.event
+async def on_message(message):
+    print(get_data(message))
+
 
 bot.run(token)
