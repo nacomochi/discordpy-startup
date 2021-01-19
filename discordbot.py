@@ -2,7 +2,10 @@ from discord.ext import commands
 import os
 import traceback
 
-bot = commands.Bot(command_prefix='/')
+bot = commands.Bot(
+    command_prefix='/'
+    activity=discord.Game("AmongUsを観戦中")
+)
 token = os.environ['DISCORD_BOT_TOKEN']
 
 
