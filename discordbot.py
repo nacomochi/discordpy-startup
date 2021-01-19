@@ -21,6 +21,7 @@ async def on_message(message):
             return
         else:
             await message.channel.send(message.author.voice.channel.name)
+            await message.channel.send(message.author.voice.channel.members)
     elif message.content == "/dm":
         dm = await message.author.create_dm()
         await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
