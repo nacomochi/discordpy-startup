@@ -20,8 +20,7 @@ async def on_message(message):
             await message.channel.send("あなたはボイスチャンネルに接続していません。")
             return
         else:
-            channel = discord.utils.get(guild.voice_channels, name="AmongUs")
-            await message.channel.send(guild.voice_channels)
+            await message.channel.send(message.author.voice.channel.name)
     elif message.content == "/dm":
         dm = await message.author.create_dm()
         await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
