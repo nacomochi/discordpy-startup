@@ -14,7 +14,7 @@ async def on_message(message):
         await message.channel.send(message.guild.roles)
     elif message.content == "!dm":
         dm = await message.author.create_dm()
-        await dm.send(f"{message.author.mention} to dm")
+        await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
 
 @bot.command()
 async def ping(ctx):
