@@ -18,7 +18,7 @@ async def on_message(message):
     # 狂人on
     elif message.content == "/mad":
         if message.author.voice is None:
-            await message.channel.send(f"***ボイスチャンネルに接続してからコマンドを入力してください***")
+            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
@@ -32,13 +32,13 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"***ボイスチャンネルのメンバー数が不適切です***")
+                await message.channel.send(f"ボイスチャンネルのメンバー数が不適切です")
                 return
             
     # てるてるon
     elif message.content == "/teru":
         if message.author.voice is None:
-            await message.channel.send(f"***ボイスチャンネルに接続してからコマンドを入力してください***")
+            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
@@ -51,7 +51,7 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"***ボイスチャンネルのメンバー数が不適切です***")
+                await message.channel.send(f"ボイスチャンネルのメンバー数が不適切です")
                 return
 
 
