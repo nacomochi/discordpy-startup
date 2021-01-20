@@ -14,7 +14,7 @@ async def on_message(message):
     # メッセージの送信者がbotだった場合は無視する
     if message.author.bot:
         return
-    elif message.content == "/voice":
+    elif message.content == "/mad":
         if message.author.voice is None:
             await message.channel.send("あなたはボイスチャンネルに接続していません")
             return
@@ -23,9 +23,27 @@ async def on_message(message):
             await message.channel.send(message.author.voice.channel.name)
             await message.channel.send(message.author.voice.channel.members)
             # member_listからランダムな1ユーザを選択し、DMを送信する
-            dm = await random.choice(message.author.voice.channel.members).create_dm()
-            await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
+            player = await random.choice(message.author.voice.channel.members)
+            dm = await player.create_dm()
+            await dm.send(f"{player}さんは狂人に選ばれました")
             await message.channel.send("DMを送信しました")
+            
+            
+    elif message.content == "/teru":
+        if message.author.voice is None:
+            await message.channel.send("あなたはボイスチャンネルに接続していません")
+            return
+        else:
+            # コマンド入力者の接続しているボイスチャンネルのmember_listを取得する
+            await message.channel.send(message.author.voice.channel.name)
+            await message.channel.send(message.author.voice.channel.members)
+            # member_listからランダムな1ユーザを選択し、DMを送信する
+            player = await random.choice(message.author.voice.channel.members)
+            dm = await player.create_dm()
+            await dm.send(f"{player}さんはてるてるに選ばれました")
+            await message.channel.send("DMを送信しました")
+            
+            
     elif message.content == "/dm":
         dm = await message.author.create_dm()
         await dm.send(f"{message.author.mention}さんは狂人に選ばれました")
