@@ -23,8 +23,7 @@ async def on_message(message):
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
                 # コマンド入力者の接続しているボイスチャンネルのメンバーを取得する
-                await message.channel.send(f"channel : {message.author.voice.channel.name}")
-                await message.channel.send(f"参加人数 : {len(message.author.voice.channel.members)}名")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 dm = await random.choice(message.author.voice.channel.members).create_dm()
                 await dm.send(f"あなたは狂人に選ばれました\nあなたがインポスターの場合、狂人はいないことになります")
@@ -32,7 +31,7 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"ボイスチャンネルのメンバー数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nボイスチャンネルの参加人数が不適切です")
                 return
             
     # てるてるon
@@ -42,16 +41,15 @@ async def on_message(message):
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
-                await message.channel.send(f"channel : {message.author.voice.channel.name}")
-                await message.channel.send(f"参加人数 : {len(message.author.voice.channel.members)}名")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 dm = await random.choice(message.author.voice.channel.members).create_dm()
-                await dm.send(f"あなたはてるてるに選ばれました\nあなたがインポスターの場合、狂人はいないことになります")
+                await dm.send(f"あなたはてるてるに選ばれました\nあなたがインポスターの場合、てるてるはいないことになります")
                 await message.channel.send(f"てるてるに選ばれた方にDMを送信しました")
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"ボイスチャンネルのメンバー数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nボイスチャンネルの参加人数が不適切です")
                 return
 
 
