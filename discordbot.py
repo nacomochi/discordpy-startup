@@ -26,7 +26,7 @@ async def on_message(message):
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 dm = await random.choice(message.author.voice.channel.members).create_dm()
-                await dm.send(f"あなたは狂人に選ばれました\nあなたがインポスターの場合、狂人はいないことになります")
+                await dm.send(f"あなたは「狂人」に選ばれました\nあなたがインポスターの場合、狂人はいないことになります")
                 await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                 return
             else:
@@ -44,7 +44,7 @@ async def on_message(message):
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 dm = await random.choice(message.author.voice.channel.members).create_dm()
-                await dm.send(f"あなたはてるてるに選ばれました\nあなたがインポスターの場合、てるてるはいないことになります")
+                await dm.send(f"あなたは「てるてる」に選ばれました\nあなたがインポスターの場合、てるてるはいないことになります")
                 await message.channel.send(f"てるてるに選ばれた方にDMを送信しました")
                 return
             else:
