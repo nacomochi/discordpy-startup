@@ -78,9 +78,19 @@ async def on_message(message):
             await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
             return
         else:
-            await Client.delete_messages()
-            await message.channel.send(f"チャットログを削除しました")
-            return
+            #役職比較
+            if discord.utils.get(message.author.roles, name="admin"):
+                # メッセージ取得
+                msgs = [msg async for msg in client.logs_from(message.channel)]
+                await client.delete_messages(msgs)
+                delmsg = await client.send_message(message.channel, '削除が完了しました')
+                await sleep(5)
+                await client.delete_message(delmsg)
+            else:
+                # エラーメッセージを送ります
+                delmsg = await client.send_message(message.channel, "admin権限がありません。")
+                await sleep(5)
+                await client.delete_message(delmsg)
 
             
 bot.run(token)
