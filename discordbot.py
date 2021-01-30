@@ -86,11 +86,13 @@ async def on_message(message):
                 delmsg = await client.send_message(message.channel, '削除が完了しました')
                 await sleep(5)
                 await client.delete_message(delmsg)
+                return
             else:
                 # エラーメッセージを送ります
                 delmsg = await client.send_message(message.channel, "admin権限がありません。")
                 await sleep(5)
                 await client.delete_message(delmsg)
+                return
 
             
 bot.run(token)
