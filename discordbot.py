@@ -82,9 +82,12 @@ async def on_message(message):
             # メッセージ取得
             msgs = [msg async for msg in client.logs_from(message.channel)]
             await client.delete_messages(msgs)
+            await message.channel.send(f"res1")
             delmsg = await client.send_message(message.channel, '削除が完了しました')
             await sleep(5)
+            await message.channel.send(f"res2")
             await client.delete_message(delmsg)
+            
             return
 
             
