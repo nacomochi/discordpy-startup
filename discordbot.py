@@ -78,9 +78,11 @@ async def on_message(message):
             await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
             return
         else:
+            await message.channel.send(f"res")
             #役職比較
             if discord.utils.get(message.author.roles, name="admin"):
                 # メッセージ取得
+                await message.channel.send(f"res1")
                 msgs = [msg async for msg in client.logs_from(message.channel)]
                 await client.delete_messages(msgs)
                 delmsg = await client.send_message(message.channel, '削除が完了しました')
@@ -88,6 +90,7 @@ async def on_message(message):
                 await client.delete_message(delmsg)
                 return
             else:
+                await message.channel.send(f"res2")
                 # エラーメッセージを送ります
                 delmsg = await client.send_message(message.channel, "admin権限がありません。")
                 await sleep(5)
