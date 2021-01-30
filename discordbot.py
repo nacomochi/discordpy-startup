@@ -65,7 +65,7 @@ async def on_message(message):
                 for i in message.author.voice.channel.members:
                     dm = await i.create_dm()
                     await dm.send(f"**これはDMのテスト送信です**\n役職に選ばれた場合、このようにDMが送信されます")
-                    await message.channel.send(f"ボイスチャンネル参加者全員にDMを送信しました")
+                await message.channel.send(f"ボイスチャンネル参加者全員にDMを送信しました")
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
