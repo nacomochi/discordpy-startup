@@ -52,8 +52,6 @@ async def on_message(message):
                     await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                     return
                 else:
-                    mad_list = random.sample(message.author.voice.channel.members, 2))
-
                     return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
@@ -113,7 +111,6 @@ async def on_message(message):
             await sleep(5)
             await message.channel.send(f"res2")
             await client.delete_message(delmsg)
-            
             return
 
             
