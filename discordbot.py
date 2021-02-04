@@ -135,6 +135,7 @@ async def on_message(message):
     # テキストチャットログ削除コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
+        await message.channel.send(message.channel.name)
         return
             
         
@@ -145,7 +146,7 @@ async def on_message(message):
             return
         else:
             await message.channel.purge()
-            await message.channel.send("""【**AuteMutebotコマンド**】
+            await message.channel.send(f"""【**AuteMutebotコマンド**】
     .au new  :  起動
     .au e  :  終了
 
