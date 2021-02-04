@@ -45,8 +45,6 @@ async def on_message(message):
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 rnd = random.randint(1,2)
-                await message.channel.send(rnd)
-                rnd = 2
                 if rnd == 1:
                     # member_listからランダムな1ユーザを選択し、DMを送信する
                     dm = await random.choice(message.author.voice.channel.members).create_dm()
@@ -54,6 +52,7 @@ async def on_message(message):
                     await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                     return
                 else:
+                    # member_listからランダムな2ユーザを選択し、DMを2通送信する
                     mad_list = random.sample(message.author.voice.channel.members, 2)
                     for i in range(2):
                         dm = await mad_list[i-1].create_dm()
@@ -111,13 +110,9 @@ async def on_message(message):
         else:
             await message.channel.send(f"res")
             # メッセージ取得
-            msgs = [msg async for msg in client.logs_from(message.channel)]
-            await client.delete_messages(msgs)
-            await message.channel.send(f"res1")
-            delmsg = await client.send_message(message.channel, '削除が完了しました')
-            await sleep(5)
-            await message.channel.send(f"res2")
-            await client.delete_message(delmsg)
+            channel = client.get_channel(message.channel)
+            await channel.purge(limit=None)
+            await message.channel.send(f"res")
             return
 
             
