@@ -109,6 +109,7 @@ async def on_message(message):
             return
         else:
             await message.channel.send(f"res")
+            await message.channel.send(message.channel)
             # メッセージ取得
             channel = client.get_channel(message.channel)
             await channel.purge(limit=None)
