@@ -52,6 +52,11 @@ async def on_message(message):
                     await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                     return
                 else:
+                    mad_list = random.sample(message.author.voice.channel.members, 2))
+                    for i in range(2):
+                        dm = await mad_list[i-1].create_dm()
+                        await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスター陣営の勝利\n【敗北条件】クルー陣営の勝利")
+                    await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                     return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
