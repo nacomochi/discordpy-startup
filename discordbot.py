@@ -141,7 +141,7 @@ async def on_message(message):
         
     # テキストチャットログ削除コマンド
     elif message.content == "/chat_delete":
-        if message.channel.name == "amongus-dmbot":
+        if message.channel.name != "amongus-dmbot":
             await message.channel.send(f"テキストチャンネル名がamongus-dmbotではありません")
             return
         else:
