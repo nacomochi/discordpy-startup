@@ -9,11 +9,6 @@ bot = commands.Bot(
 )
 token = os.environ['DISCORD_BOT_TOKEN']
 
-@bot.event
-async def on_ready():
-    print('bot起動しました')
-    await client.change_presence(activity=discord.Game(name="Amongus", type=1))
-
 
 @bot.event
 async def on_message(message):
@@ -144,6 +139,8 @@ async def on_message(message):
     # テキストチャットログ削除コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
+        activity = discord.Activity(name='Amongus', type=discord.ActivityType.watching)
+        await client.change_presence(activity=activity)
         return
             
         
