@@ -53,6 +53,7 @@ async def on_message(message):
                     return
                 else:
                     mad_list = random.sample(message.author.voice.channel.members, 2))
+                    await message.channel.send(mad_list)
                     for i in range(2):
                         dm = await mad_list[i].create_dm()
                         await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスター陣営の勝利\n【敗北条件】クルー陣営の勝利")
