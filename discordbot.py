@@ -135,7 +135,7 @@ async def on_message(message):
     # テキストチャットログ削除コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
-        await message.channel.send(message.author.channel)
+        await message.channel.send(message.channel.name)
         return
             
         
@@ -148,25 +148,26 @@ async def on_message(message):
             if message.author.guild_permissions.administrator:
                 await message.channel.purge()
                 await message.channel.send("""【**AuteMutebotコマンド**】
-    .au new : 起動
-    .au e   : 終了
+    .au new  :  起動
+    .au e  :  終了
+
 
 【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
-    /mad_1       : 参加者から狂人1名をランダムに選択
-    /mad_2       : 参加者から狂人2名をランダムに選択
-    /mad_randam  : 参加者から狂人1or2名をランダムに選択
-    /teru_1   : 参加者からてるてる1名をランダムに選択
-    /dm_test     : 参加者全員にDMのテスト送信
-    /status      : botの起動状態を確認
-    /chat_delete : テキストチャットログを全て削除
+    /mad_1  :  参加者から狂人1名をランダムに選択
+    /mad_2  :  参加者から狂人2名をランダムに選択
+    /mad_randam  :  参加者から狂人1or2名をランダムに選択
+    /teru_1  :  参加者からてるてる1名をランダムに選択
+    /dm_test  :  参加者全員にDMのテスト送信
+    /status  :  botの起動状態を確認
+    /chat_delete  :  テキストチャットログを全て削除
 
 
 【**狂人について**】
     プレイヤーの中からbotがランダムに選出します
     狂人の人数は入力したコマンドによって変動します
-    /mad_1      : 狂人1名固定
-    /mad_2      : 狂人2名固定（重複なし）
-    /mad_randam : 狂人1名もしくは2名のランダム（重複なし）
+    /mad_1  :  狂人1名固定
+    /mad_2  :  狂人2名固定（重複なし）
+    /mad_randam  :  狂人1名もしくは2名のランダム（重複なし）
 
     [勝利条件]
     インポスターの勝利（狂人の生死を問わず）
@@ -176,16 +177,16 @@ async def on_message(message):
 
     [備考]
     ・インポスターも狂人も互いに認知できない状態から始まります
-    ・狂人は生存時にクルーメイト同様タスクをこなしますが、任意のショートタスクを一つ残しタスク勝利を妨害できます
-    ・残したタスクは幽霊になったら必ず消化しなければなりません
-    ・狂人に選ばれたプレイヤーがインポスターとなった場合、狂人1名欠けの状態となります
+    ・狂人は生存時にクルーメイト同様タスクをこなしますが、任意のショートタスクを1つ残しタスク勝利を妨害できます
+    ・狂人が幽霊になった場合、残したタスクを必ず消化しなければなりません
+    ・狂人に選ばれたプレイヤーがインポスターとなった場合、狂人欠けの状態となります
     
     
 【**てるてるについて**】
     プレイヤーの中からbotがランダムに1名選出します
 
     [勝利条件]
-    てるてるが「投票で吊られる」と試合が終了し、てるてるの1人勝ちとなる
+    てるてるが「投票で吊られる」と試合が終了し、てるてるの1人勝ちとなります
     
     [敗北条件]
     ・インポスターにキルされてしまう
