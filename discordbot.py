@@ -9,8 +9,10 @@ bot = commands.Bot(
 )
 token = os.environ['DISCORD_BOT_TOKEN']
 
-activity = discord.Activity(name='my activity', type=discord.ActivityType.watching)
-await client.change_presence(activity=activity)
+@bot.event
+async def on_ready():
+    print('bot起動しました')
+    await client.change_presence(activity=discord.Game(name="Amongus", type=1))
 
 
 @bot.event
