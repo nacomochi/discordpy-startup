@@ -27,7 +27,7 @@ async def on_message(message):
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 dm = await random.choice(message.author.voice.channel.members).create_dm()
-                await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、無効試合となるので名乗り出てください\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利")
+                await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、無効試合となるので名乗り出てください\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利\n")
                 await message.channel.send(f"狂人に選ばれた方1名にDMを送信しました")
                 return
             else:
@@ -49,7 +49,7 @@ async def on_message(message):
                 mad_list = random.sample(message.author.voice.channel.members, 2)
                 for i in range(2):
                     dm = await mad_list[i-1].create_dm()
-                    await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利")
+                    await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利\n")
                 await message.channel.send(f"狂人に選ばれた方2名にDMを送信しました")
                 return
             else:
@@ -73,7 +73,8 @@ async def on_message(message):
                 if rnd == 1:
                     # member_listからランダムな1ユーザを選択し、DMを送信する
                     dm = await random.choice(message.author.voice.channel.members).create_dm()
-                    await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利")
+                    await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利\n")
+                    # 処理時間で人数が推測できないように処理を遅延
                     await asyncio.sleep(2)
                     await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                     return
@@ -83,7 +84,7 @@ async def on_message(message):
                     mad_list = random.sample(message.author.voice.channel.members, 2)
                     for i in range(2):
                         dm = await mad_list[i-1].create_dm()
-                        await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利")
+                        await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利\n")
                     await message.channel.send(f"狂人に選ばれた方にDMを送信しました")
                     return
             else:
@@ -102,7 +103,7 @@ async def on_message(message):
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 dm = await random.choice(message.author.voice.channel.members).create_dm()
-                await dm.send(f"あなたは「**てるてる**」に選ばれました\nあなたがインポスターの場合、てるてるは欠けた状態となります\n【勝利条件】あなたが投票で吊られること\n【敗北条件】インポスターにキルされるor他陣営の勝利")
+                await dm.send(f"あなたは「**てるてる**」に選ばれました\nあなたがインポスターの場合、てるてるは欠けた状態となります\n【勝利条件】あなたが投票で吊られること\n【敗北条件】インポスターにキルされるor他陣営の勝利\n")
                 await message.channel.send(f"てるてるに選ばれた方にDMを送信しました")
                 return
             else:
@@ -123,7 +124,7 @@ async def on_message(message):
                 # ボイスチャンネル参加者全員にDMを送信する
                 for i in message.author.voice.channel.members:
                     dm = await i.create_dm()
-                    await dm.send(f"**これはDMのテスト送信です**\n役職に選ばれた場合、このようにDMが送信されます")
+                    await dm.send(f"**これはDMのテスト送信です**\n役職に選ばれた場合、このようにDMが送信されます\n")
                 await message.channel.send(f"ボイスチャンネル参加者全員にDMを送信しました")
                 return
             else:
@@ -135,7 +136,6 @@ async def on_message(message):
     # テキストチャットログ削除コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
-        await message.channel.send(message.channel.name)
         return
             
         
