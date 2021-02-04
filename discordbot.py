@@ -146,7 +146,7 @@ async def on_message(message):
             return
         else:
             await message.channel.purge()
-            await message.channel.send(f"""【**AuteMutebotコマンド**】
+            await message.channel.send("""【**AuteMutebotコマンド**】
     .au new  :  起動
     .au e  :  終了
 
