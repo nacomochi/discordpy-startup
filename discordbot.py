@@ -45,6 +45,8 @@ async def on_message(message):
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
                 rnd = random.randint(1,2)
+                await message.channel.send(rnd)
+                rnd = 2
                 if rnd == 1:
                     # member_listからランダムな1ユーザを選択し、DMを送信する
                     dm = await random.choice(message.author.voice.channel.members).create_dm()
