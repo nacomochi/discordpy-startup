@@ -40,7 +40,7 @@ async def on_message(message):
             await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
             return
         else:
-            if 10 >= len(message.author.voice.channel.members) > 0:
+            if 10 >= len(message.author.voice.channel.members) > 1:
                 # コマンド入力者の接続しているボイスチャンネルのメンバーを取得する
                 await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
                 # member_listからランダムな1ユーザを選択し、DMを送信する
