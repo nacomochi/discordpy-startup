@@ -135,19 +135,17 @@ async def on_message(message):
     # テキストチャットログ削除コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
-        await message.channel.send(message.channel.name)
         return
             
         
     # テキストチャットログ削除コマンド
     elif message.content == "/chat_delete":
-        if message.author.voice is None:
-            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
+        if message.channel.name == "amongus-dmbot" is None:
+            await message.channel.send(f"テキストチャンネル名がamongus-dmbotではありません")
             return
         else:
-            if message.author.guild_permissions.administrator:
-                await message.channel.purge()
-                await message.channel.send("""【**AuteMutebotコマンド**】
+            await message.channel.purge()
+            await message.channel.send("""【**AuteMutebotコマンド**】
     .au new  :  起動
     .au e  :  終了
 
@@ -159,7 +157,7 @@ async def on_message(message):
     /teru_1  :  参加者からてるてる1名をランダムに選択
     /dm_test  :  参加者全員にDMのテスト送信
     /status  :  botの起動状態を確認
-    /chat_delete  :  テキストチャットログを全て削除
+    /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
 
 
 【**狂人について**】
@@ -195,8 +193,6 @@ async def on_message(message):
     [備考]
     ・てるてるは生存時にクルーメイト同様タスクをこなさなければなりません
     ・てるてるに選ばれたプレイヤーがインポスターとなった場合、てるてる欠けの状態となります""")
-            else:
-                await message.channel.send('コマンド入力者の権限が足りていません')
             return
 
             
