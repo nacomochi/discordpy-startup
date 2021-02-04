@@ -109,11 +109,11 @@ async def on_message(message):
             return
         else:
             await message.channel.send(f"res")
-            await message.channel.send(message.channel)
-            # メッセージ取得
-            channel = client.get_channel(message.channel)
-            await channel.purge(limit=None)
-            await message.channel.send(f"res")
+            if message.author.guild_permissions.administrator:
+                await message.channel.purge()
+                await message.channel.send('塵一つ残らないね！')
+            else:
+                await message.channel.send('何様のつもり？')
             return
 
             
