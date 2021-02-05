@@ -140,7 +140,7 @@ async def on_message(message):
                 return
             
             
-    # テキストチャットログ削除コマンド
+    # bot動作確認コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
         return
@@ -152,6 +152,7 @@ async def on_message(message):
             await message.channel.send(f"テキストチャンネル名がamongus-dmbotではありません")
             return
         else:
+            await asyncio.sleep(1)
             await message.channel.purge()
             await message.channel.send("""【**AuteMutebotコマンド**】
     .au new  :  起動
