@@ -147,14 +147,27 @@ async def on_message(message):
             
      
     # 隠しコマンド
-    elif message.content == "よしお天才って言って":
+    elif message.content == "よしおちゃん天才って言って":
         rnd = random.randint(1,3)
         if rnd == 1:
             await message.channel.send(f"ﾖｼｵﾁｬﾝﾃﾝｻｲﾔｯﾀｰ!!!")
         elif rnd == 2:
+            await asyncio.sleep(1)
             await message.channel.send(f"こ ろ す ぞ")
         else:
-            await message.channel.send(f"Yoshio is Impostor.")
+            await message.channel.send(f"Yoshio is an Impostor.")
+        return
+    
+    
+    # 隠しコマンド
+    elif message.content == "がめんさん天才って言って":
+        rnd = random.randint(1,3)
+        if rnd == 1:
+            await message.channel.send(f"Gamen is an old man.:older_man:")
+        elif rnd == 2:
+            await message.channel.send(f"Gamen is an old man.:older_man:")
+        else:
+            await message.channel.send(f"Gamen is an old man.:older_man:")
         return
     
         
