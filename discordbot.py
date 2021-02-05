@@ -145,6 +145,18 @@ async def on_message(message):
         await message.channel.send(f"bot起動中です")
         return
             
+     
+    # 隠しコマンド
+    elif message.content == "よしお天才って言って":
+        rnd = random.randint(1,3)
+        if rnd == 1:
+            await message.channel.send(f"ﾖｼｵﾁｬﾝﾃﾝｻｲﾔｯﾀｰ!!!")
+        elif rnd == 2:
+            await message.channel.send(f"こ ろ す ぞ")
+        else:
+            await message.channel.send(f"Yoshio is Impostor.")
+        return
+    
         
     # テキストチャットログ削除コマンド
     elif message.content == "/chat_delete":
