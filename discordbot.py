@@ -252,7 +252,7 @@ async def on_message(message):
     elif message.content == "よしおさんに投票します":
         rnd = random.randint(1,3)
         if rnd == 1:
-            await message.channel.send(f"じゃあ、なこもちに入れます<:aupurple:787851727821996042>")
+            await message.channel.send(f"<:aupurple:787851727821996042><じゃあ、なこもちに入れます")
         elif rnd == 2:
             await message.channel.send(f"Yoshio is an Impostor.<:aupurpledead:787851743399641091>")
         else:
@@ -266,7 +266,7 @@ async def on_message(message):
         if rnd == 1:
             await message.channel.send(f"Gamen is an old man.:older_man:")
         elif rnd == 2:
-            await message.channel.send(f"Nuts to you!<:auwhite:787851726308376606>")
+            await message.channel.send(f"<:auwhite:787851726308376606><Nuts to you!")
         else:
             await message.channel.send(f"<:auwhitedead:787851742577688597>")
         return
@@ -276,11 +276,11 @@ async def on_message(message):
     elif message.content == "ばななさんに投票します":
         rnd = random.randint(1,3)
         if rnd == 1:
-            await message.channel.send(f"えぇ～わからんーーー:sob:<:aupink:787851721182543922>")
+            await message.channel.send(f"<:aupink:787851721182543922><えぇ～わからんーーー:sob:")
         elif rnd == 2:
-            await message.channel.send(f"ﾋﾟｰ!ﾋﾟﾋﾟﾋﾟｰ!!!:scream:<:aupink:787851721182543922>")
+            await message.channel.send(f"<:aupink:787851721182543922><ﾋﾟｰ!ﾋﾟﾋﾟﾋﾟｰ!!!:scream:")
         else:
-            await message.channel.send(f"ﾋﾟｰ...ﾋﾟｰ...:pensive:<:aupinkdead:787851737360629800>")
+            await message.channel.send(f"<:aupinkdead:787851737360629800><ﾋﾟｰ...ﾋﾟｰ...:pensive:")
         return
     
         
