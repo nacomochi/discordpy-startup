@@ -191,9 +191,9 @@ async def on_message(message):
         if rnd == 1:
             await message.channel.send(f"Gamen is an old man.:older_man:")
         elif rnd == 2:
-            await message.channel.send(f"Nuts to you!:auwhite:")
+            await message.channel.send(f"Nuts to you!<:auwhite:787851726308376606>")
         else:
-            await message.channel.send(f":auwhitedead:")
+            await message.channel.send(f"<:auwhitedead:787851742577688597>")
         return
     
     
