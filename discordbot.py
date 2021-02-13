@@ -131,8 +131,8 @@ async def on_message(message):
                 # ボイスチャンネル参加者全員にDMを送信する
                 for i in message.author.voice.channel.members:
                     dm = await i.create_dm()
-                    await dm.send(f"**これはDMのテスト送信です**\n役職に選ばれた場合、このようにbotからDMが届きます\n- - - - -")
-                await message.channel.send(f"ボイスチャンネル参加者全員にDMを送信しました")
+                    await dm.send(f"**これはDMのテスト送信です**\nあなたが役職に選ばれた場合、このようにbotからDMが届きます\n- - - - -")
+                await message.channel.send(f"ボイスチャンネル参加者全員にDMをテスト送信しました")
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
@@ -143,6 +143,20 @@ async def on_message(message):
     # bot動作確認コマンド
     elif message.content == "/status":
         await message.channel.send(f"bot起動中です")
+        return
+    
+
+    # コマンドリスト表示
+    elif message.content == "/command":
+        await message.channel.send(f"""【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
+    /mad_1  :  参加者から狂人1名をランダムに選択
+    /mad_2  :  参加者から狂人2名をランダムに選択
+    /mad_randam  :  参加者から狂人1or2名をランダムに選択
+    /teru_1  :  参加者からてるてる1名をランダムに選択
+    /dm_test  :  参加者全員にDMのテスト送信を行う
+    /status  :  botの起動状態を確認
+    /command  :  botのコマンドリストを表示
+    /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除""")
         return
             
      
@@ -160,14 +174,38 @@ async def on_message(message):
     
     
     # 隠しコマンド
-    elif message.content == "がめんさん天才って言って":
+    elif message.content == "よしおさんに投票します":
+        rnd = random.randint(1,3)
+        if rnd == 1:
+            await message.channel.send(f"じゃあ、なこもちに入れます:aupurple:")
+        elif rnd == 2:
+            await message.channel.send(f"Yoshio is an Impostor.:aupurpledead:")
+        else:
+            await message.channel.send(f"Yoshio is an Impostor.:aupurpledead:")
+        return
+    
+    
+    # 隠しコマンド
+    elif message.content == "がめんさんに投票します":
         rnd = random.randint(1,3)
         if rnd == 1:
             await message.channel.send(f"Gamen is an old man.:older_man:")
         elif rnd == 2:
-            await message.channel.send(f"Gamen is an old man.:older_man:")
+            await message.channel.send(f"Nuts to you!:auwhite:")
         else:
-            await message.channel.send(f"Gamen is an old man.:older_man:")
+            await message.channel.send(f":auwhitedead:")
+        return
+    
+    
+    # 隠しコマンド
+    elif message.content == "ばななさんに投票します":
+        rnd = random.randint(1,3)
+        if rnd == 1:
+            await message.channel.send(f"えぇ～わからんーーー:sob::aupink:")
+        elif rnd == 2:
+            await message.channel.send(f"ﾋﾟｰ!ﾋﾟﾋﾟﾋﾟｰ!!!:scream::aupink:")
+        else:
+            await message.channel.send(f"ﾋﾟｰ...ﾋﾟｰ...:pensive::aupinkdead:")
         return
     
         
@@ -189,8 +227,9 @@ async def on_message(message):
     /mad_2  :  参加者から狂人2名をランダムに選択
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
     /teru_1  :  参加者からてるてる1名をランダムに選択
-    /dm_test  :  参加者全員にDMのテスト送信
+    /dm_test  :  参加者全員にDMのテスト送信を行う
     /status  :  botの起動状態を確認
+    /command  :  botのコマンドリストを表示
     /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
 
 
