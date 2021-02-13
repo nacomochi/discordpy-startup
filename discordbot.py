@@ -13,9 +13,77 @@ token = os.environ['DISCORD_BOT_TOKEN']
 # activity = discord.Activity(name='Amongus', type=discord.ActivityType.watching)
 # await client.change_presence(activity=activity)
 
+# 接続に必要なオブジェクトを生成
+client = discord.Client()
+
+# 起動時に動作する処理
+@client.event
+async def on_ready():
+    # 起動したらターミナルにログイン通知が表示される
+    await message.channel.send(f"ログインしました")
+    return
+
 
 @bot.event
 async def on_message(message):
+    
+    #説明文作成
+    read_me = """【**AuteMutebotコマンド**】
+    .au new  :  起動
+    .au e  :  終了
+
+
+【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
+    /mad_1  :  参加者から狂人1名をランダムに選択
+    /mad_2  :  参加者から狂人2名をランダムに選択
+    /mad_randam  :  参加者から狂人1or2名をランダムに選択
+    /teru_1  :  参加者からてるてる1名をランダムに選択
+    /dm_test  :  参加者全員にDMのテスト送信を行う
+    /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
+    /status  :  botの起動状態を確認
+    /command  :  botのコマンドリストを表示
+    /read_me  :  botの説明文を表示
+
+    [備考]
+    DM送信時にbotから表示された参加人数がボイスチャンネル内の人数と一致しない場合、
+    チャンネル内の全員が一度通話に入りなおすことで解消されます
+
+
+【**狂人について**】
+    プレイヤーの中からbotがランダムに選出します
+    狂人の人数は入力したコマンドによって変動します
+    /mad_1  :  狂人1名固定
+    /mad_2  :  狂人2名固定（重複なし）
+    /mad_randam  :  狂人1名もしくは2名のランダム（重複なし）
+
+    [勝利条件]
+    インポスターの勝利（狂人の生死を問わず）
+    
+    [敗北条件]
+    クルーメイトの勝利（狂人の生死を問わず）
+
+    [備考]
+    ・インポスターも狂人も互いに認知できない状態から始まります
+    ・狂人は生存時にクルーメイト同様タスクをこなしますが、任意のショートタスクを1つ残しタスク勝利を妨害できます
+    ・狂人が幽霊になった場合、残したタスクを必ず消化しなければなりません
+    ・狂人に選ばれたプレイヤーがインポスターとなった場合、狂人欠けの状態となります
+    
+    
+【**てるてるについて**】
+    プレイヤーの中からbotがランダムに1名選出します
+
+    [勝利条件]
+    てるてるが「投票で吊られる」と試合が終了し、てるてるの1人勝ちとなります
+    
+    [敗北条件]
+    ・インポスターにキルされてしまう
+    ・投票で吊られずに「クルーメイトorインポスターが勝利する」と敗北
+
+    [備考]
+    ・てるてるは生存時にクルーメイト同様タスクをこなさなければなりません
+    ・てるてるに選ばれたプレイヤーがインポスターとなった場合、てるてる欠けの状態となります"""
+    
+    
     # メッセージの送信者がbotだった場合は無視する
     if message.author.bot:
         return
@@ -154,22 +222,29 @@ async def on_message(message):
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
     /teru_1  :  参加者からてるてる1名をランダムに選択
     /dm_test  :  参加者全員にDMのテスト送信を行う
+    /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
     /status  :  botの起動状態を確認
     /command  :  botのコマンドリストを表示
-    /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除""")
+    /read_me  :  botの説明文を表示""")
         return
-            
+
+    
+    # readme表示
+    elif message.content == "/read_me":
+        await message.channel.send(read_me)
+        return
+    
      
     # 隠しコマンド
     elif message.content == "よしおちゃん天才って言って":
         rnd = random.randint(1,3)
         if rnd == 1:
-            await message.channel.send(f"ﾖｼｵﾁｬﾝﾃﾝｻｲﾔｯﾀｰ!!!")
+            await message.channel.send(f"ﾖｼｵﾁｬﾝﾃﾝｻｲﾔｯﾀｰ!!!<:aupurple:787851727821996042>")
         elif rnd == 2:
             await asyncio.sleep(1)
-            await message.channel.send(f"こ ろ す ぞ")
+            await message.channel.send(f"こ ろ す ぞ <:aupurple:787851727821996042>")
         else:
-            await message.channel.send(f"Yoshio is an Impostor.")
+            await message.channel.send(f"Yoshio is an Impostor.<:aupurpledead:787851743399641091>")
         return
     
     
@@ -177,11 +252,11 @@ async def on_message(message):
     elif message.content == "よしおさんに投票します":
         rnd = random.randint(1,3)
         if rnd == 1:
-            await message.channel.send(f"じゃあ、なこもちに入れます:aupurple:")
+            await message.channel.send(f"じゃあ、なこもちに入れます<:aupurple:787851727821996042>")
         elif rnd == 2:
-            await message.channel.send(f"Yoshio is an Impostor.:aupurpledead:")
+            await message.channel.send(f"Yoshio is an Impostor.<:aupurpledead:787851743399641091>")
         else:
-            await message.channel.send(f"Yoshio is an Impostor.:aupurpledead:")
+            await message.channel.send(f"Yoshio is not an Impostor.<:aupurpledead:787851743399641091>")
         return
     
     
@@ -201,11 +276,11 @@ async def on_message(message):
     elif message.content == "ばななさんに投票します":
         rnd = random.randint(1,3)
         if rnd == 1:
-            await message.channel.send(f"えぇ～わからんーーー:sob::aupink:")
+            await message.channel.send(f"えぇ～わからんーーー:sob:<:aupink:787851721182543922>")
         elif rnd == 2:
-            await message.channel.send(f"ﾋﾟｰ!ﾋﾟﾋﾟﾋﾟｰ!!!:scream::aupink:")
+            await message.channel.send(f"ﾋﾟｰ!ﾋﾟﾋﾟﾋﾟｰ!!!:scream:<:aupink:787851721182543922>")
         else:
-            await message.channel.send(f"ﾋﾟｰ...ﾋﾟｰ...:pensive::aupinkdead:")
+            await message.channel.send(f"ﾋﾟｰ...ﾋﾟｰ...:pensive:<:aupinkdead:787851737360629800>")
         return
     
         
@@ -217,55 +292,7 @@ async def on_message(message):
         else:
             await asyncio.sleep(1)
             await message.channel.purge()
-            await message.channel.send("""【**AuteMutebotコマンド**】
-    .au new  :  起動
-    .au e  :  終了
-
-
-【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
-    /mad_1  :  参加者から狂人1名をランダムに選択
-    /mad_2  :  参加者から狂人2名をランダムに選択
-    /mad_randam  :  参加者から狂人1or2名をランダムに選択
-    /teru_1  :  参加者からてるてる1名をランダムに選択
-    /dm_test  :  参加者全員にDMのテスト送信を行う
-    /status  :  botの起動状態を確認
-    /command  :  botのコマンドリストを表示
-    /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
-
-
-【**狂人について**】
-    プレイヤーの中からbotがランダムに選出します
-    狂人の人数は入力したコマンドによって変動します
-    /mad_1  :  狂人1名固定
-    /mad_2  :  狂人2名固定（重複なし）
-    /mad_randam  :  狂人1名もしくは2名のランダム（重複なし）
-
-    [勝利条件]
-    インポスターの勝利（狂人の生死を問わず）
-    
-    [敗北条件]
-    クルーメイトの勝利（狂人の生死を問わず）
-
-    [備考]
-    ・インポスターも狂人も互いに認知できない状態から始まります
-    ・狂人は生存時にクルーメイト同様タスクをこなしますが、任意のショートタスクを1つ残しタスク勝利を妨害できます
-    ・狂人が幽霊になった場合、残したタスクを必ず消化しなければなりません
-    ・狂人に選ばれたプレイヤーがインポスターとなった場合、狂人欠けの状態となります
-    
-    
-【**てるてるについて**】
-    プレイヤーの中からbotがランダムに1名選出します
-
-    [勝利条件]
-    てるてるが「投票で吊られる」と試合が終了し、てるてるの1人勝ちとなります
-    
-    [敗北条件]
-    ・インポスターにキルされてしまう
-    ・投票で吊られずに「クルーメイトorインポスターが勝利する」と敗北
-
-    [備考]
-    ・てるてるは生存時にクルーメイト同様タスクをこなさなければなりません
-    ・てるてるに選ばれたプレイヤーがインポスターとなった場合、てるてる欠けの状態となります""")
+            await message.channel.send(read_me)
             return
 
             
