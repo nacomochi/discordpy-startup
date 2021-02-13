@@ -14,14 +14,14 @@ token = os.environ['DISCORD_BOT_TOKEN']
 # await client.change_presence(activity=activity)
 
 # 接続に必要なオブジェクトを生成
-client = discord.Client()
+# client = discord.Client()
 
 # 起動時に動作する処理
-@client.event
-async def on_ready():
+# @client.event
+# async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
-    await message.channel.send(f"ログインしました")
-    return
+#     await message.channel.send(f"ログインしました")
+#     return
 
 
 @bot.event
