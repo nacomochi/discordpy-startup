@@ -85,7 +85,7 @@ async def on_message(message):
     
     
 【**Credit**】
-    bot制作：なこもち(TwiiterID:nacomochio)"""
+    bot制作 : なこもち (TwiiterID : nacomochio)"""
     
     
     # メッセージの送信者がbotだった場合は無視する
