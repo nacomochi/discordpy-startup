@@ -28,12 +28,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 async def on_message(message):
     
     #説明文作成
-    read_me = """【**AuteMutebotコマンド**】
-    .au new  :  起動
-    .au e  :  終了
-
-
-【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
+    read_me = """【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
     /mad_1  :  参加者から狂人1名をランダムに選択
     /mad_2  :  参加者から狂人2名をランダムに選択
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
