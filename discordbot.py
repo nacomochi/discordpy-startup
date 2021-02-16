@@ -28,7 +28,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 async def on_message(message):
     
     #説明文作成
-    read_me = """【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
+    read_me = """【**AmongUs-DMbotコマンド**】(ロールに関わらず使用可能です)
     /mad_1  :  参加者から狂人1名をランダムに選択
     /mad_2  :  参加者から狂人2名をランダムに選択
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
@@ -96,7 +96,7 @@ async def on_message(message):
     # 狂人1名固定on
     elif message.content == "/mad_1":
         if message.author.voice is None:
-            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
+            await message.channel.send(f"ボイスチャンネルに接続した状態でコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
@@ -116,7 +116,7 @@ async def on_message(message):
     # 狂人2名固定on
     elif message.content == "/mad_2":
         if message.author.voice is None:
-            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
+            await message.channel.send(f"ボイスチャンネルに接続した状態でコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 1:
@@ -138,7 +138,7 @@ async def on_message(message):
     # 狂人1or2名on
     elif message.content == "/mad_randam":
         if message.author.voice is None:
-            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
+            await message.channel.send(f"ボイスチャンネルに接続した状態でコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 1:
@@ -177,7 +177,7 @@ async def on_message(message):
     # てるてるon
     elif message.content == "/teru_1":
         if message.author.voice is None:
-            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
+            await message.channel.send(f"ボイスチャンネルに接続した状態でコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
@@ -196,7 +196,7 @@ async def on_message(message):
     # DMテストコマンド
     elif message.content == "/dm_test":
         if message.author.voice is None:
-            await message.channel.send(f"ボイスチャンネルに接続してからコマンドを入力してください")
+            await message.channel.send(f"ボイスチャンネルに接続した状態でコマンドを入力してください")
             return
         else:
             if 10 >= len(message.author.voice.channel.members) > 0:
@@ -222,7 +222,7 @@ async def on_message(message):
 
     # コマンドリスト表示
     elif message.content == "/command":
-        await message.channel.send(f"""【**AmongUs-DMbotコマンド**】(DMbotは誰でも使用可能です)
+        await message.channel.send(f"""【**AmongUs-DMbotコマンド**】(ロールに関わらず使用可能です)
     /mad_1  :  参加者から狂人1名をランダムに選択
     /mad_2  :  参加者から狂人2名をランダムに選択
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
