@@ -32,6 +32,7 @@ async def on_message(message):
     /mad_1  :  参加者から狂人1名をランダムに選択
     /mad_2  :  参加者から狂人2名をランダムに選択
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
+    /mad_3  :  参加者から狂人3名をランダムに選択
     /teru_1  :  参加者からてるてる1名をランダムに選択
     /dm_test  :  参加者全員にDMのテスト送信を行う
     /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
@@ -45,11 +46,12 @@ async def on_message(message):
 
 
 【**狂人について**】
-    プレイヤーの中からbotがランダムに選出します
+    ボイスチャンネル参加者の中からbotがランダムに選出します
     狂人の人数は入力したコマンドによって変動します
     /mad_1  :  狂人1名固定
     /mad_2  :  狂人2名固定（重複なし）
     /mad_randam  :  狂人1名もしくは2名のランダム（重複なし）
+    /mad_3  :  狂人3名固定（重複なし）
 
     [勝利条件]
     インポスターの勝利（狂人の生死を問わず）
@@ -67,7 +69,7 @@ async def on_message(message):
     
     
 【**てるてるについて**】
-    プレイヤーの中からbotがランダムに1名選出します
+    ボイスチャンネル参加者の中からbotがランダムに1名選出します
 
     [勝利条件]
     てるてるが「投票で吊られる」と試合が終了し、てるてるの1人勝ちとなります
@@ -85,7 +87,8 @@ async def on_message(message):
     
     
 【**Credit**】
-    bot制作 : なこもち (TwiiterID : nacomochio)"""
+    bot制作 : なこもち (TwiiterID : nacomochio)
+    last_update : 2021/02/17"""
     
     
     # メッセージの送信者がbotだった場合は無視する
@@ -109,7 +112,7 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です\n1~10人の状態でコマンドを実行してください")
                 return
             
             
@@ -131,7 +134,7 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です\n2~10人の状態でコマンドを実行してください")
                 return
             
             
@@ -170,7 +173,29 @@ async def on_message(message):
                     return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です\n2~10人の状態でコマンドを実行してください")
+                return
+            
+            
+    # 狂人3名固定on
+    elif message.content == "/mad_3":
+        if message.author.voice is None:
+            await message.channel.send(f"ボイスチャンネルに接続した状態でコマンドを入力してください")
+            return
+        else:
+            if 10 >= len(message.author.voice.channel.members) > 2:
+                # コマンド入力者の接続しているボイスチャンネルのメンバーを取得する
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名")
+                # member_listからランダムな3ユーザを選択し、DMを2通送信する
+                mad_list = random.sample(message.author.voice.channel.members, 3)
+                for i in range(3):
+                    dm = await mad_list[i-1].create_dm()
+                    await dm.send(f"あなたは「**狂人**」に選ばれました\nあなたがインポスターの場合、狂人は1人欠けた状態となります\n【勝利条件】インポスターの勝利\n【敗北条件】クルーメイトの勝利\n- - - - -")
+                await message.channel.send(f"狂人に選ばれた方3名にDMを送信しました")
+                return
+            else:
+                # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です\n3~10人の状態でコマンドを実行してください")
                 return
             
             
@@ -189,7 +214,7 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です\n1~10人の状態でコマンドを実行してください")
                 return
 
             
@@ -210,7 +235,7 @@ async def on_message(message):
                 return
             else:
                 # コマンド入力者の接続しているボイスチャンネルのメンバー数が規定値にない
-                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です")
+                await message.channel.send(f"channel : {message.author.voice.channel.name}\n参加人数 : {len(message.author.voice.channel.members)}名\nDMを送信できませんでした。ボイスチャンネルの参加人数が不適切です\n1~10人の状態でコマンドを実行してください")
                 return
             
             
@@ -226,6 +251,7 @@ async def on_message(message):
     /mad_1  :  参加者から狂人1名をランダムに選択
     /mad_2  :  参加者から狂人2名をランダムに選択
     /mad_randam  :  参加者から狂人1or2名をランダムに選択
+    /mad_3  :  参加者から狂人3名をランダムに選択
     /teru_1  :  参加者からてるてる1名をランダムに選択
     /dm_test  :  参加者全員にDMのテスト送信を行う
     /chat_delete  :  amongus-dmbotテキストチャットのログを全て削除
@@ -296,7 +322,8 @@ async def on_message(message):
             await message.channel.send(f"テキストチャンネル名がamongus-dmbotではありません")
             return
         else:
-            await asyncio.sleep(1)
+            await message.channel.send(f"このテキストチャンネルのログを全て削除します")
+            await asyncio.sleep(2)
             await message.channel.purge()
             await message.channel.send(read_me)
             return
