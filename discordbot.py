@@ -16,7 +16,7 @@ token = os.environ['DISCORD_BOT_TOKEN']
 @bot.event
 async def on_ready():
     # 起動したらターミナルにログイン通知が表示される
-    print('ログインしました')
+    # print('ログインしました')
 
 
 # 接続に必要なオブジェクトを生成
