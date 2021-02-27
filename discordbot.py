@@ -11,7 +11,6 @@ bot = commands.Bot(
 )
 
 token = os.environ['DISCORD_BOT_TOKEN']
-# token = 'ODAxMTk3ODc0NzQ2MDk3Njk2.YAdLqg.EVz3_44IKTeVqPSCNTWMFDybtN4'
 
     
 # 接続に必要なオブジェクトを生成
@@ -36,13 +35,6 @@ async def before_change_activity():
 # tasks.loop を開始
 change_activity.start()
 
-
-
-# 起動時に動作する処理
-# @client.event
-# async def on_ready():
-    # 起動したらターミナルにログイン通知を表示
-    # print('ログインしました')
 
 
 # コマンド受信時に動作する処理
