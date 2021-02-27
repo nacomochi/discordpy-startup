@@ -39,8 +39,8 @@ change_activity.start()
 
 
 # 起動時に動作する処理
-@client.event
-async def on_ready():
+# @client.event
+# async def on_ready():
     # 起動したらターミナルにログイン通知を表示
     # print('ログインしました')
 
